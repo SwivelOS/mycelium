@@ -210,6 +210,7 @@
         const ghosts = [
             { id: 'g1', agent: 'SWIV', domain: 'trading', collapsed_to: 'shadow mode first',  branches: [{label:'shadow first',weight:0.75},{label:'abort+respec',weight:0.15},{label:'go live now',weight:0.10}] },
             { id: 'g2', agent: 'SWIV', domain: 'product', collapsed_to: 'ship and iterate',   branches: [{label:'ship and iterate',weight:0.70},{label:'polish more',weight:0.20},{label:'rebuild from scratch',weight:0.10}] },
+        ];
 
         const svg = d3.select('#viz').append('svg');
         const g = svg.append('g');
