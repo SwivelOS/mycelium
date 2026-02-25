@@ -227,7 +227,8 @@
             type: 'agent',
             ...data,
             x: data.x * width,
-            y: data.y * height
+            y: data.y * height,
+            radius: 14
         }));
 
         const memoryNodes = memories.map((m, i) => {
@@ -244,7 +245,7 @@
             };
         });
 
-        const ghostNodes = ghostTraces.map((g, i) => {
+        const ghostNodes = ghosts.map((g, i) => {
             const agent = agents[g.agent];
             return {
                 ...g,
