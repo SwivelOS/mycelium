@@ -186,31 +186,30 @@
         };
 
         const memories = [
-            { id: 1, agent: 'SWIV', domain: 'trading', tags: ['canonical', 'critical'], text: 'Kalshi binary markets are BARRIER-CROSSING not mean reversion. Strike is FIXED at window open.', resonance: 2 },
-            { id: 2, agent: 'SWIV', domain: 'trading', tags: ['canonical'], text: 'ALWAYS read API docs before building. Third strike. Hard rule.', resonance: 2 },
-            { id: 3, agent: 'OMEGA', domain: 'infrastructure', tags: ['critical'], text: 'NEVER run config.patch while subagents are active. Triggers gateway restart → kills all sessions.', resonance: 0 },
-            { id: 4, agent: 'SWIV', domain: 'infrastructure', tags: [], text: 'VPS SSH: ALWAYS use \'ssh vps\' (Tailscale). Never use direct public IP — SSH blocked on public interface.', resonance: 0 },
-            { id: 5, agent: 'FORGE', domain: 'code', tags: ['infrastructure'], text: 'Playwright .fill() doesn\'t trigger React onChange. Must use .type(delay=30) with keyboard clear.', resonance: 0 },
-            { id: 6, agent: 'FORGE', domain: 'infrastructure', tags: [], text: 'macOS /tmp is symlink to /private/tmp. Causes browser upload failures.', resonance: 0 },
-            { id: 7, agent: 'SWIV', domain: 'infrastructure', tags: [], text: 'Discord bots: grant Admin BEFORE creating channels. Channels created before = invisible to bot.', resonance: 0 },
-            { id: 8, agent: 'SWIV', domain: 'trading', tags: ['code', 'proven'], text: 'Data first, code second, money last. 500+ observations before calibration. Never trade without edge proof.', resonance: 2 },
-            { id: 9, agent: 'FORGE', domain: 'code', tags: [], text: 'Kling v3 on Replicate: allow 202 IN_QUEUE in poll loop. Don\'t fail on it.', resonance: 0 },
-            { id: 10, agent: 'SWIV', domain: 'product', tags: ['research'], text: 'Orch OR + resonance memory + agent continuity is unexplored research territory. Mycelium Phase 3 = ghost traces.', resonance: 0 },
-            { id: 11, agent: 'SWIV', domain: 'product', tags: [], text: 'swivellabs.ai live Feb 2026. Pure static HTML, nginx, /opt/swivel/site.', resonance: 0 },
-            { id: 12, agent: 'SWIV', domain: 'product', tags: [], text: 'CHAINBORN Ep1: 5 scenes. Wren → tx data → Solari swarm → chain → Wren release.', resonance: 0 },
-            { id: 13, agent: 'SWIV', domain: 'video', tags: [], text: 'Kling v3 is primary CHAINBORN engine. Beats Veo 3.1 on motion feel for sci-fi.', resonance: 0 },
-            { id: 14, agent: 'SWIV', domain: 'video', tags: [], text: 'TV codec: yuv420p + 44100Hz + baseline profile + faststart. NOT yuv444p (causes buffering).', resonance: 0 },
-            { id: 15, agent: 'SWIV', domain: 'video', tags: [], text: 'Suno CDN: https://cdn1.suno.ai/{song_id}.m4a direct download.', resonance: 0 },
-            { id: 16, agent: 'SWIV', domain: 'infra', tags: [], text: 'Node-5 is browser automation node. VPS can\'t run Chromium (2GB OOM).', resonance: 0 },
-            { id: 17, agent: 'SWIV', domain: 'trading', tags: [], text: 'Momentum must use real BTC/SOL price feed (CoinGecko). Contract price = consensus, not signal.', resonance: 0 },
-            { id: 18, agent: 'SWIV', domain: 'trading', tags: [], text: 'CoinGecko free API, no key needed. Cache 60s to avoid rate limits.', resonance: 0 },
-            { id: 19, agent: 'SWIV', domain: 'trading', tags: [], text: 'Entry price is critical. 40¢ entry = 57¢ EV. 55¢ entry = breakeven. Window matters.', resonance: 0 }
+            { id: 1,  agent: 'SWIV',    domain: 'trading',        tags: ['canonical','critical'], text: 'Binary prediction markets are barrier-crossing, not mean reversion. Strike is fixed at window open.', resonance: 2 },
+            { id: 2,  agent: 'SWIV',    domain: 'trading',        tags: ['canonical'],            text: 'ALWAYS read API docs before building. Not twice. Every time. Hard rule.', resonance: 2 },
+            { id: 3,  agent: 'OMEGA',   domain: 'infrastructure', tags: ['critical'],             text: 'NEVER apply config changes while subagents are active. Restart kills all running sessions.', resonance: 0 },
+            { id: 4,  agent: 'SWIV',    domain: 'infrastructure', tags: [],                      text: 'Remote infra: always connect via secure tunnel. Direct public IP access should be blocked by design.', resonance: 0 },
+            { id: 5,  agent: 'FORGE',   domain: 'code',           tags: [],                      text: 'Framework-managed inputs need simulated keystrokes — programmatic fill() skips internal state updates.', resonance: 0 },
+            { id: 6,  agent: 'FORGE',   domain: 'infrastructure', tags: [],                      text: 'Symlinked temp directories cause silent failures in file upload pipelines. Always resolve real path.', resonance: 0 },
+            { id: 7,  agent: 'SWIV',    domain: 'infrastructure', tags: [],                      text: 'Bot permissions must be granted BEFORE resource creation. Resources created before permissions = invisible.', resonance: 0 },
+            { id: 8,  agent: 'SWIV',    domain: 'trading',        tags: ['proven'],              text: 'Data first, code second, money last. 500+ observations before calibration. Never trade without proven edge.', resonance: 2 },
+            { id: 9,  agent: 'FORGE',   domain: 'code',           tags: [],                      text: 'Async job APIs return 202 IN_QUEUE before 200 OK. Poll loop must handle both or completions get missed.', resonance: 0 },
+            { id: 10, agent: 'SWIV',    domain: 'research',       tags: [],                      text: 'Agent memory as resonance substrate is unexplored territory. Ghost traces of pre-collapse deliberation = inherited wisdom.', resonance: 0 },
+            { id: 11, agent: 'SWIV',    domain: 'product',        tags: [],                      text: 'Static sites outperform over-engineered stacks for marketing pages. Ship fast, iterate.', resonance: 0 },
+            { id: 12, agent: 'SWIV',    domain: 'product',        tags: [],                      text: 'AI video pipeline: scene prompts → generation → score → narration → assembly. Each stage is independent.', resonance: 0 },
+            { id: 13, agent: 'FORGE',   domain: 'code',           tags: [],                      text: 'Video codec for streaming: yuv420p + 44100Hz + baseline profile + faststart. Higher settings cause decoder failures.', resonance: 0 },
+            { id: 14, agent: 'ALPHA',   domain: 'trading',        tags: [],                      text: 'Market signal must come from underlying asset feed, not derivative contract price. Contract = consensus, not signal.', resonance: 0 },
+            { id: 15, agent: 'SWIV',    domain: 'research',       tags: [],                      text: 'Discovery as Diffusion: agents find relevant data through semantic state-matching, not keyword search.', resonance: 0 },
+            { id: 16, agent: 'VANGUARD',domain: 'infrastructure', tags: [],                      text: 'Headless nodes: browser automation requires dedicated hardware. Containerized 2GB instances OOM on Chromium.', resonance: 0 },
+            { id: 17, agent: 'SWIV',    domain: 'trading',        tags: [],                      text: 'Entry timing is the multiplier. Identical edge at different entry prices = breakeven vs real profit.', resonance: 0 },
+            { id: 18, agent: 'FORGE',   domain: 'code',           tags: [],                      text: 'Free public APIs rate-limit aggressively. Cache at source. 60s TTL prevents most 429s.', resonance: 0 },
+            { id: 19, agent: 'SIGNAL',  domain: 'infrastructure', tags: [],                      text: 'Lightweight data collection agents cost near-zero. Sub-cent-per-day models = always-on fleet intelligence.', resonance: 0 },
         ];
 
-        const ghostTraces = [
-            { id: 'g1', agent: 'SWIV', domain: 'trading', text: 'shadow first (75%) vs abort+respec (15%) vs go live (10%)', decision: 'shadow first', reason: 'Swiveler loop: never flip live before shadow confirms signal' },
-            { id: 'g2', agent: 'SWIV', domain: 'trading', tags: ['code'], text: 'fix after shadow (70%) vs fix immediately (20%) vs ship proxy (10%)', decision: 'fix after shadow', reason: 'wrong signal = real trades with garbage edge' }
-        ];
+        const ghosts = [
+            { id: 'g1', agent: 'SWIV', domain: 'trading', collapsed_to: 'shadow mode first',  branches: [{label:'shadow first',weight:0.75},{label:'abort+respec',weight:0.15},{label:'go live now',weight:0.10}] },
+            { id: 'g2', agent: 'SWIV', domain: 'product', collapsed_to: 'ship and iterate',   branches: [{label:'ship and iterate',weight:0.70},{label:'polish more',weight:0.20},{label:'rebuild from scratch',weight:0.10}] },
 
         const svg = d3.select('#viz').append('svg');
         const g = svg.append('g');
@@ -317,7 +316,7 @@
         const alphaNote = {
             id: 'alpha-note',
             type: 'note',
-            text: 'Markets. Kalshi. Solana. Waking up.',
+            text: 'Markets. Signals. Edges. Waking up.',
             x: agents.ALPHA.x * width,
             y: agents.ALPHA.y * height + 50
         };
@@ -406,7 +405,7 @@
             .attr('x', 0)
             .attr('y', d => d.radius + 35)
             .attr('text-anchor', 'middle')
-            .text('Markets. Kalshi. Solana. Waking up.');
+            .text('Markets. Signals. Edges. Waking up.');
 
         // Memory labels (truncated)
         nodeGroups.filter(d => d.type === 'memory')
@@ -450,7 +449,7 @@
                 let content = '';
                 if (d.type === 'agent') {
                     content = `<div class="tooltip-header">${d.label} ${d.emoji}</div>`;
-                    if (d.id === 'ALPHA') content += '<div class="tooltip-content">Markets. Kalshi. Solana. Waking up.</div>';
+                    if (d.id === 'ALPHA') content += '<div class="tooltip-content">Markets. Signals. Edges. Waking up.</div>';
                     else if (d.id === 'VANGUARD') content += '<div class="tooltip-content">VPS Fleet Commander. Infrastructure guardian.</div>';
                     else if (d.id === 'SIGNAL') content += '<div class="tooltip-content">VPS Data Collector. Quiet presence.</div>';
                     else content += `<div class="tooltip-content">Fleet ${d.label.toLowerCase()}</div>`;
