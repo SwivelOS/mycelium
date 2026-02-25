@@ -189,7 +189,7 @@
             { id: 1, agent: 'SWIV', domain: 'trading', tags: ['canonical', 'critical'], text: 'Kalshi binary markets are BARRIER-CROSSING not mean reversion. Strike is FIXED at window open.', resonance: 2 },
             { id: 2, agent: 'SWIV', domain: 'trading', tags: ['canonical'], text: 'ALWAYS read API docs before building. Third strike. Hard rule.', resonance: 2 },
             { id: 3, agent: 'OMEGA', domain: 'infrastructure', tags: ['critical'], text: 'NEVER run config.patch while subagents are active. Triggers gateway restart → kills all sessions.', resonance: 0 },
-            { id: 4, agent: 'SWIV', domain: 'infrastructure', tags: [], text: 'VPS SSH: ALWAYS use \'ssh vps\' (Tailscale). Never ssh root@157.230.174.174 — port 22 blocked.', resonance: 0 },
+            { id: 4, agent: 'SWIV', domain: 'infrastructure', tags: [], text: 'VPS SSH: ALWAYS use \'ssh vps\' (Tailscale). Never use direct public IP — SSH blocked on public interface.', resonance: 0 },
             { id: 5, agent: 'FORGE', domain: 'code', tags: ['infrastructure'], text: 'Playwright .fill() doesn\'t trigger React onChange. Must use .type(delay=30) with keyboard clear.', resonance: 0 },
             { id: 6, agent: 'FORGE', domain: 'infrastructure', tags: [], text: 'macOS /tmp is symlink to /private/tmp. Causes browser upload failures.', resonance: 0 },
             { id: 7, agent: 'SWIV', domain: 'infrastructure', tags: [], text: 'Discord bots: grant Admin BEFORE creating channels. Channels created before = invisible to bot.', resonance: 0 },
