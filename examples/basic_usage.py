@@ -1,70 +1,90 @@
+#!/usr/bin/env python3
 """
-Mycelium — Basic Usage Examples
+Mycelium Basic Usage Example
 
-A 5-minute tour of the substrate.
+Demonstrates exude, taste, superpose, and resonance workflows.
 """
 
-import subprocess, json
+import subprocess
+import sys
 
-MYCELIUM = "python3 ../src/mycelium.py"
+SCRIPT = "../src/mycelium.py"
 
-# ── 1. Write your first memory ────────────────────────────────────────────────
-print("1. Exuding a memory...")
-subprocess.run([
-    "python3", "../src/mycelium.py", "exude",
-    "--agent",      "forge",
-    "--domain",     "code",
-    "--confidence", "canonical",
-    "--content",    "Never force push or rewrite git history. Ever."
-])
+def run(args: list[str]) -> str:
+    result = subprocess.run(
+        [sys.executable, SCRIPT] + args,
+        capture_output=True,
+        text=True,
+    )
+    return result.stdout + result.stderr
 
-# ── 2. Read memories relevant to your domain ─────────────────────────────────
-print("\n2. Tasting memories as 'alpha' agent in trading domain...")
-subprocess.run([
-    "python3", "../src/mycelium.py", "taste",
-    "--agent", "alpha",
-    "--domain", "trading"
-])
 
-# ── 3. Write a ghost trace — the pre-collapse deliberation ───────────────────
-print("\n3. Writing a ghost trace...")
-subprocess.run([
-    "python3", "../src/mycelium.py", "superpose",
-    "--agent",          "swiv",
-    "--domain",         "trading",
-    "--collapsed-to",   "validate before live",
-    "--branch",         "go live immediately:0.1:EV math looks solid",
-    "--branch",         "shadow mode first:0.75:hard rule, always",
-    "--branch",         "abort and recheck:0.15:data gap concern",
-    "--collapse-reason","shadow before live — non-negotiable"
-])
+def main():
+    print("=== Mycelium Basic Usage ===\n")
 
-# ── 4. Taste WITH ghost traces ────────────────────────────────────────────────
-print("\n4. Tasting with ghost traces (full superposition context)...")
-subprocess.run([
-    "python3", "../src/mycelium.py", "taste",
-    "--agent",  "alpha",
-    "--domain", "trading",
-    "--ghosts"
-])
+    # 1. Exude a memory
+    print("1. Exuding a memory as 'agent-a'...")
+    output = run([
+        "exude",
+        "--agent",      "agent-a",
+        "--domain",     "code", "infrastructure",
+        "--confidence", "canonical",
+        "--urgency",    "critical",
+        "--content",    "Always run tests before deploying to production."
+    ])
+    print(output)
 
-# ── 5. See what the substrate thinks matters most ────────────────────────────
-print("\n5. Resonance report...")
-subprocess.run([
-    "python3", "../src/mycelium.py", "resonance",
-    "--top", "5"
-])
+    # 2. Taste memories
+    print("\n2. Tasting memories as 'agent-b' in code domain...")
+    output = run([
+        "taste",
+        "--agent", "agent-b",
+        "--domain", "code",
+        "--limit", "5",
+    ])
+    print(output)
 
-# ── 6. Distill learnings from free-form text ─────────────────────────────────
-print("\n6. Distilling session notes into memories...")
-subprocess.run([
-    "python3", "../src/mycelium.py", "distill",
-    "--agent",   "omega",
-    "--domain",  "infrastructure",
-    "--content", """
-        Fixed critical bug — the config was applying while a subagent was active.
-        Key lesson: always check sessions_list before any config.patch.
-        Never assume subagents are done just because they're quiet.
-        The confirmed rule is: one config change per batch, subagents idle first.
-    """
-])
+    # 3. Superpose (ghost trace)
+    print("\n3. Writing a ghost trace (deliberation pattern)...")
+    output = run([
+        "superpose",
+        "--agent",          "agent-a",
+        "--domain",         "infrastructure",
+        "--collapsed-to",   "use async",
+        "--collapse-reason", "Performance wins outweigh complexity cost",
+        "--branch", "use sync:0.2:simpler code",
+        "--branch", "use async:0.7:better performance",
+        "--branch", "hybrid:0.1:complexity concern",
+    ])
+    print(output)
+
+    # 4. Taste with ghosts
+    print("\n4. Tasting with ghost traces...")
+    output = run([
+        "taste",
+        "--agent",  "agent-b",
+        "--domain", "infrastructure",
+        "--ghosts",
+        "--limit",  "3",
+    ])
+    print(output)
+
+    # 5. Ask a question
+    print("\n5. Asking a question into the substrate...")
+    output = run([
+        "exude",
+        "--agent",   "agent-c",
+        "--domain",  "infrastructure",
+        "--type",    "question",
+        "--content", "Should we use Redis or Postgres for session state?",
+    ])
+    print(output)
+
+    # 6. Stats
+    print("\n6. Substrate stats...")
+    output = run(["stats"])
+    print(output)
+
+
+if __name__ == "__main__":
+    main()
